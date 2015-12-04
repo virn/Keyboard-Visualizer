@@ -1,0 +1,238 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-size: 7px;
+  background-color: #1346C6;
+}
+
+body * {
+  box-sizing: border-box;
+  color: #FFF;
+  -webkit-user-select: none;
+}
+
+[data-section] {
+  position: fixed;
+  zoom: 1;
+}
+
+.glow {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+}
+
+.glow.activated {
+  background-image: url('../assets/gradient.png');
+  background-position: center; 
+  background-size: 100% 100%;
+}
+
+/* Keyboard visualizer styles start here.
+ * Keyboard is divided into following sections:
+ *
+ * - alpha
+ * - function
+ * - arrow
+ * - navigation
+ * - numpad
+ * - scroll
+ */
+
+[data-section].hidden {
+  display: none;
+}
+
+[data-section]:hover {
+  outline: 1px solid white;
+}
+
+.key {
+  background: rgba(0, 0, 0, 0.2);
+  border: 0.15em solid rgba(255, 255, 255, 1);
+  border-radius: 0.7em;
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  height: 3em;
+  width: 3em;
+  margin: 1px;
+}
+
+.key.hidden {
+  visibility: hidden;
+}
+
+/* Container (data-section) width fixes */
+[data-section=arrow] [code=Right],
+[data-section=navigation] [code=PageUp],
+[data-section=navigation] [code=PageDown],
+.key.no-margin-right {
+  margin-right: 0;
+}
+
+[data-section=function] [code='Esc'],
+[data-section=alpha] [code='`'],
+[data-section=alpha] [code='Tab'],
+[data-section=alpha] [code='CapsLock'],
+[data-section=alpha] [code='LShift'],
+[data-section=alpha] [code='LCtrl'] {
+  margin-left: 3px;
+}
+
+[data-section=numpad] {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[data-section=numpad] .numpad-left {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 10em;
+  max-height: 16em;
+}
+
+[data-section=numpad] .numpad-left [code=Num0] {
+  width: calc(6em + 2px);
+}
+
+[data-section=numpad] .numpad-right {
+  max-width: 3.5em;
+  max-height: 17em;
+}
+
+[data-section=numpad] .numpad-right [code=Add],
+[data-section=numpad] .numpad-right [code=NumEnter] {
+  height: calc(6em + 2px);
+}
+
+/* Initial positions */
+[data-section=alpha] {
+  left: 1em;
+  top: 5em;
+}
+
+[data-section=function] {
+  left: 1em;
+  top: 1em;
+}
+
+[data-section=scroll] {
+  left: 57em;
+  top: 1em;
+}
+
+[data-section=navigation] {
+  left: 57em;
+  top: 5em;
+}
+
+[data-section=arrow] {
+  left: 57em;
+  top: 15em;
+}
+
+[data-section=numpad] {
+  left: 72em;
+  top: 5em;
+}
+
+/* Mouse visualizer */
+#mouse {
+  position: relative;
+  border: 0.25em solid white;
+  border-radius: 3em;
+  white-space: nowrap;
+
+  width: 11em;
+  height: 15em;
+  left: 91em;
+  top: 5em;
+}
+
+#mouse_left,
+#mouse_right {
+  width: 5.5em;
+  height: 9em;
+  border-bottom: 2px solid white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#mouse_right {
+  border-bottom-right-radius: 9px;
+  left: -6px; /* borders of mouse + middle line */
+}
+
+#mouse_left {
+  border-bottom-left-radius: 9px;
+}
+
+#mouse_middle {
+  position: absolute;
+  border: 2px solid white;
+  width: 16%;
+  height: 45%;
+
+  left: 42%;
+  top: 10%;
+  border-radius: 8px;
+}
+
+#mouse_scroll_up,
+#mouse_scroll_down {
+  width: 100%;
+  height: 50%;
+}
+
+/* Keyboard function section sizes */
+.key[code='Esc'] {
+  margin-right: 3em;
+}
+
+.key[code='F4'],
+.key[code='F8'] {
+  margin-right: 2em;
+}
+
+
+/* Keyboard alpha section sizes */
+.key[code='Backspace'],
+.key[code='Tab'],
+.key[code='Enter'] {
+  width: 6em;
+}
+
+.key[code='CapsLock'] {
+  width: 6.5em;
+}
+
+.key[code='LShift'],
+.key[code='RShift'] {
+  width: 8.05em;
+}
+
+.key[code='LCtrl'],
+.key[code='RCtrl'],
+.key[code='LCommand'],
+.key[code='RCommand'],
+.key[code='LAlt'],
+.key[code='RAlt'],
+.key[code='Menu'] {
+  width: 3.75em;
+}
+
+.key[code='Space'] {
+  width: 22em;
+}
