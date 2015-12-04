@@ -21,7 +21,7 @@
   var xjs = require('xjs');
   var Item = xjs.Item;
   var Rectangle = xjs.Rectangle;
-
+  var thisItem ='';
   /* Key code mappings (wParam)
    * In the event that two keys share the same wparam, we use an array where
    * arr[1] refers to the key sending lParam with bit 24 = 1 (extended key)
@@ -437,9 +437,9 @@
     }
   });
 
-
   // XBC interaction begins here
   xjs.ready().then(Item.getCurrentSource).then(function(item) {
+    thisItem = item;
     return item.setKeepAspectRatio(false);
   }).then(function(item) {
     // use whole stage for source
@@ -466,6 +466,21 @@
       keyboard: $('[data-section=keyboard]'),
     };
 
+    var receiveData = function(config){
+      console.log('Called receiveData on Load');
+      for (var i in config) {
+        if (sections[i] !== undefined) {
+          if (config[i] === false) {
+            sections[i].addClass('hidden');
+          } else {
+            sections[i].removeClass('hidden');
+          }
+        }
+      }          
+    };    
+    //Apply config on Load
+    thisItem.loadConfig().then(receiveData);
+    //Apply config on Save
     xjs.SourcePluginWindow.getInstance().on('save-config', function(config) {
       item.saveConfig(config);
       // apply configuration

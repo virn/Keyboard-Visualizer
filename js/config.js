@@ -66,7 +66,6 @@
       mouse   : elements.mouse.checked,
       keyboard   : elements.keyboard.checked,
     };
-
     item.requestSaveConfig(config);
   };
 
@@ -107,8 +106,5 @@
         updateConfig(currentSource);
       });
     };
-  }).then(function(config){
-    item.applyConfig(config);
-    
   });
 })();
