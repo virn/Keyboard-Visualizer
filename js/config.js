@@ -109,5 +109,6 @@
     };
   }).then(function(config){
     item.applyConfig(config);
+    
   });
 })();

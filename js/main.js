@@ -437,6 +437,7 @@
     }
   });
 
+
   // XBC interaction begins here
   xjs.ready().then(Item.getCurrentSource).then(function(item) {
     return item.setKeepAspectRatio(false);
